@@ -1,0 +1,266 @@
+@define-color fg #F5F5F5;
+@define-color bg #1C1C1C;
+@define-color text #FFFFFF;
+@define-color bordercolor #595959;
+@define-color buttoncolor #A0A0A0;
+@define-color disabled #A5A5A5;
+@define-color alert #F53C3C;
+@define-color activegreen #26A65B;
+@define-color highlight #FFFFFF;
+@define-color blue #8aadf4;
+@define-color red #ed8796;
+@define-color yellow #eed49f;
+@define-color green #a6da95;
+
+/*
+@define-color base #24273a;
+@define-color mantle #1e2030;
+@define-color crust #181926;
+
+@define-color text #cad3f5;
+@define-color subtext0 #a5adcb;
+@define-color subtext1 #b8c0e0;
+
+@define-color surface0 #363a4f;
+@define-color surface1 #494d64;
+@define-color surface2 #5b6078;
+
+@define-color overlay0 #6e738d;
+@define-color overlay1 #8087a2;
+@define-color overlay2 #939ab7;
+
+@define-color blue #8aadf4;
+@define-color lavender #b7bdf8;
+@define-color sapphire #7dc4e4;
+@define-color sky #91d7e3;
+@define-color teal #8bd5ca;
+@define-color yellow #eed49f;
+@define-color peach #f5a97f;
+@define-color maroon #ee99a0;
+@define-color red #ed8796;
+@define-color mauve #c6a0f6;
+@define-color pink #f5bde6;
+@define-color flamingo #f0c6c6;
+@define-color rosewater #f4dbd6;
+*/
+
+#custom-pomodoro {
+  color: @highlight;
+  background-color: @bg;
+  padding: 0 14px 0 14px;
+  font-size: 20px;
+  margin: 0.35em;
+  border: 2px solid @bordercolor;
+}
+* {
+  font-family: Liga SFMono Nerd Font;
+  font-size: 15px;
+  border-radius: 1em;
+}
+
+#workspace {
+    margin: 0.5em;
+    border: 2px solid @bordercolor;
+    background-color: @bg;
+}
+
+#custom-power {
+  color: @highlight;
+  font-weight: bold;
+  background-color: @bg;
+  padding: 0 14px 0 14px;
+  font-size: 20px;
+}
+#workspaces {
+    color: @buttoncolor;
+    font-weight: bold;
+    background-color: @bg;
+    font-size: 20px;
+}
+
+#workspaces label {}
+
+#workspaces button {
+    margin: 0.25em;
+    color: @buttoncolor;
+    background-color: @bg;
+    padding: 0 10px;
+    border-radius: 16px;
+    font-size: 15px;
+}
+
+#workspaces button.urgent {
+    color: @red;
+}
+
+#workspaces button.empty {
+    color: @buttoncolor;
+}
+
+#workspaces button.active {
+    color: @highlight;
+    padding: 0 12px 0 10px;
+    border-radius: 16px;
+    background-color: @bordercolor;
+    border: none;
+    opacity: 1;
+}
+#custom-spotify,
+#stats {
+  background-color: @bg;
+  border: 2px solid @bordercolor;
+  margin: 0.5em;
+  padding: 0 10px;
+}
+
+#notifications {
+  margin: 0.5em;
+  padding: 0 5px;
+  color: @buttoncolor;
+  font-weight: bold;
+  background-color: @bg;
+  border: 2px solid @bordercolor;
+}
+
+
+/*
+#window {
+  color: @highlight;
+  background-color: @bg;
+  border: 2px solid @bordercolor;
+  border-radius: 1em;
+  margin: 0.5em;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+*/
+window#waybar {
+  color: @text;
+  background: rgba(0, 0, 0, 0);
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+tooltip {
+  background: @bg;
+  border: 1px solid @bordercolor;
+}
+
+tooltip label {
+  color: @highlight;
+}
+
+label:focus {
+  background-color: @bg;
+}
+
+button {
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
+}
+
+box {
+  border: none;
+}
+
+#custom-notificaton{
+    color: @highlight;
+}
+#custom-updates,
+#custom-github,
+#cpu,
+#temperature,
+#custom-gpu-temperature,
+#memory,
+#disk,
+#bluetooth,
+#pulseaudio,
+#network {
+  padding: 0 0.5em;
+}
+
+/* Unique colors for modules */
+#cpu {
+  color: @red;
+}
+
+#memory {
+  color: @yellow;
+}
+
+#disk {
+  color: @red;
+}
+
+#custom-gpu-temperature,
+#temperature {
+  color: @blue;
+}
+
+#network {
+  color: @highlight;
+}
+
+#pulseaudio {
+  color: @highlight;
+  padding-right: 0.85em;
+}
+
+#custom-github {
+  color: @blue;
+}
+
+#custom-updates {
+  color: @red;
+}
+
+#pulseaudio.muted {
+  background-color: #90b1b1;
+  color: @text;
+}
+
+#temperature.critical {
+  background-color: @alert;
+}
+
+#clock {
+  padding-right: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  color: @highlight;
+}
+
+#custom-wallpaper{
+    color: @green;
+    padding-right: 2px;
+}
+
+#custom-separator-right,
+#custom-separator-left {
+  font-size: 20px;
+  padding: 0 0.5em;
+  color: @text;
+}
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
+}
+
+/* If workspaces is the leftmost module, omit left margin */
+.modules-left > widget:first-child > #workspaces {
+  margin-left: 0;
+}
+
+/* If workspaces is the rightmost module, omit right margin */
+.modules-right > widget:last-child > #workspaces {
+  margin-right: 0;
+}
+

@@ -1,0 +1,5 @@
+# GIMP gimp-by-color-select-tool options
+
+(select-criterion lch-l)
+
+# end of gimp-by-color-select-tool options

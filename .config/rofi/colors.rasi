@@ -1,0 +1,119 @@
+// vim:ft=css:
+* {
+  font:                   "JetBrainsMono Nerd Font 12";
+  foreground:                    #A0A0A0;  // Slightly lighter for readability
+  background:                    #1C1C1C;  // Darker background
+  highlight:                     #5B5B5B;  // Slightly lighter than background for highlighting
+
+  pink:                          #A67C6B;  // Darker pink
+  old-highlight:                 #A44C4C;  // Darker old-highlight color
+  red:                           #5B2D2F;  // Darker red
+  darkred:                       #5B2D2F;  // Same as red
+  yellow:                        #B09C5A;  // Darker yellow
+  darkyellow:                    #A78A4C;  // Darker darkyellow
+  lightblue:                     #6F8C9F;  // Darker lightblue
+  oldforeground:                 #4F6C7A;  // Darker oldforeground
+  altblue:                       #7A8CC3;  // Darker altblue
+  altwhite:                      #B0A8A2;  // Darker altwhite
+  white:                         #C0C0C0;  // Slightly lighter white
+
+  b5:                            #1E1E1E;  // Darker than previous b5
+  b4:                            #00243A;  // Darker than previous b4
+  b3:                            #1C1C1C;  // Same as background
+  b2:                            #2A2A2A;  // Darker than previous b2
+  b1:                            #3D3D3D;  // Darker than previous b1
+
+  lightgray:                     #A0A0A0;  // Darker lightgray
+  lightgray:                     #4C4C4C;  // Darker lightgray
+  mediumgray:                    #2D2D2D;  // Darker mediumgray
+  darkgray:                      #1A1A1A;  // Darker darkgray
+  black:                         #0E0E0E;  // Darker black
+  darkblack:                     #000000;  // Same as darkblack
+}
+
+element-icon {
+  /*Better to increase the whole element size with dpi*/
+  /*size: 22;*/
+}
+
+element-text {
+  highlight:        @highlight;
+}
+
+window {
+  border-color:     @foreground;
+}
+
+inputbar {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+prompt {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+textbox-prompt-colon {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+message {
+  text-color: @foreground;
+  background-color: @background;
+}
+
+entry {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+listview {
+  background-color: @background;
+}
+
+mode-switcher {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+button {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+element {
+  text-color:       @foreground;
+  background-color: @background;
+}
+
+element normal.normal {
+  background-color: @background;
+  text-color:       @foreground;
+}
+
+element normal.active {
+  background-color: @background;
+  text-color:       @foreground;
+}
+
+element selected.normal {
+  text-color:       @background;
+  background-color: @foreground;
+}
+
+element selected.active {
+  background-color: @foreground;
+  text-color:       @background;
+}
+
+element alternate.normal {
+  background-color: @background;
+  text-color:       @foreground;
+}
+
+element alternate.active {
+  background-color: @background;
+  text-color:       @foreground;
+}

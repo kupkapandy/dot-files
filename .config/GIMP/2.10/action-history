@@ -1,0 +1,25 @@
+# GIMP action-history
+
+(history-item "edit-cut" 5)
+(history-item "tools-fuzzy-select" 2)
+(history-item "tools-paintbrush" 3)
+(history-item "file-export" 1)
+(history-item "filters-color-exchange" 1)
+(history-item "filters-invert-perceptual" 2)
+(history-item "select-none" 0)
+(history-item "edit-paste-as-new-image" 2)
+(history-item "select-all" 0)
+(history-item "file-quit" 1)
+(history-item "edit-copy" 0)
+(history-item "select-invert" 0)
+(history-item "tools-iscissors" 0)
+(history-item "tools-by-color-select" 0)
+(history-item "edit-paste" 1)
+(history-item "layers-alpha-remove" 0)
+(history-item "layers-alpha-add" 0)
+(history-item "tools-by-color-select-short" 0)
+(history-item "image-new" 0)
+(history-item "tools-color-picker" 0)
+(history-item "file-open" 1)
+
+# end of action-history
