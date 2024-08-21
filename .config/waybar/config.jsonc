@@ -1,265 +1,256 @@
 // vim:ft=conf
 {
-    "layer": "top",
-        "position": "top",
-        "output": ["DP-1", "HDMI-A-1"],
-        "margin-left": 20,
-        "margin-right": 20,
-        "margin-top": 10,
-
-        "modules-left": [
-            "group/workspace",
-        "group/stats",
-        ],
-        "modules-center": [
-
-            "custom/spotify",
-            "custom/pomodoro",
-
-        ],
-        "modules-right": [
-            "group/notifications",
-        ],
-
-        // Modules configuration
-        "custom/pomodoro": {
-            "format": "{}",
-            "pause": " 󰸉 ",
-            "return-type": "json",
-            "exec": "waybar-module-pomodoro -a '' -p '' -o ''",
-            "on-click": "waybar-module-pomodoro toggle",
-            "on-click-right": "waybar-module-pomodoro reset",
-        },
-        "hyprland/workspaces": {
-            "format": "{icon}",
-            "format-icons": {
-                "1": "󰈹",
-                "2": "",
-                "3": "",
-                "4": "",
-                "5": "󰈙",
-                "6": "",
-                "7": "󰠮",
-                "8": "",
-                "9": "",
-                "10": "",
-                "urgent": "",
-                "default": ""
-            },
-            "on-scroll-up": "hyprctl dispatch workspace e+1",
-            "on-scroll-down": "hyprctl dispatch workspace e-1", 
-            "all-outputs": true,
-        },
-        "custom/spotify": {
-            "exec": "$HOME/.scripts/spotify.sh",
-            "max-length": 75,
-            "format": " {}",
-            "on-click": "sleep 0.1 && eww open --toggle dashboard",
-            "tooltip": false
-        },
-        "custom/wallpaper": {
-            "format": " 󰸉 ",
-            "on-click": "sleep 0.1 && bash ~/.scripts/quotes-randomizer.sh",
-            "tooltip": false,
-        },
-        "hyprland/window": {
-            "format": "{}",
-            "max-lenght": 30,
-            "rewrite": {
-                "(.*) - Mozilla Firefox": "🌎 firefox",
-                "org.pwmt.zathura": "📰 zathura",
-                "Spotify": "🎼 spotify",
-            },
-            "separate-outputs": true
-        },
-        "tray": {
-            "icon-size": 18,
-            "spacing": 5,
-            "show-passive-items": true,
-            "format": "{label}",
-            "label": " | ",
-        },
-
-        "clock": {
-            "interval": 60,
-            "format": "   {:%a %b %d %I:%M %p}", // %b %d %Y  --Date formatting
-            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format-alt": " {:%Y-%m-%d}"
-        },
-
-        "temperature": {
-            "format": " {temperatureC}°C",
-        },
-
-        "custom/gpu-temperature": {
-            "exec": "nvidia-smi -q -i 0,1 -d TEMPERATURE | grep -oP 'GPU Current Temp\\s+:\\s+\\K\\d+'",
-            "format": " {}°C",
-            "return-type": "",
-            "interval": 1,
-            "on-click": "nvidia-settings",
-        },
-
-        "cpu": {
-            "format": " {usage}%",
-            "on-click": "kitty btop",
-            "tooltip": true
-        },
-
-        "memory": {
-            "interval": 2,
-            "format": "{}% "
-        },
-
-        "disk": {
-            "format": "{percentage_used}% 󰋊",
-        },
-
-        "backlight": {
-            // "device": "acpi_video1",
-            "format": "{percent}% {icon}",
-            "format-icons": ["", "", "", "", "", "", "", "", ""]
-        },
-
-        "network": {
-            "interface": "wlp2s0",
-            "format": "{ifname}",
-            "format-wifi": "{essid}   {signalStrength}%",
-            "format-ethernet": "{ipaddr}/{cidr} 󰊗",
-            "format-disconnected": "", //An empty format will hide the module.
-            "tooltip-format": "{ifname} via {gwaddr} 󰊗",
-            "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-            "tooltip-format-ethernet": "{ifname} ",
-            "tooltip-format-disconnected": "Disconnected",
-            "max-length": 50
-        },
-
-        "pulseaudio": {
-            "format": "{volume}% {icon}",
-            "format-bluetooth": "{volume}% {icon} {format_source}",
-            "format-bluetooth-muted": " {icon} {format_source}",
-            "format-muted": " {format_source}",
-            "format-icons": {
-                "headphone": "",
-                "hands-free": "",
-                "headset": "",
-                "phone": "",
-                "portable": "",
-                "car": "",
-                "default": ["", "", ""]
-            },
-            "on-click": "pavucontrol"
-        },
-
-        "custom/power": {
-            "format": "{icon}",
-            "format-icons": "",
-            "exec-on-event": "true",
-            "on-click": "~/.scripts/session_menu.sh",
-            "tooltip": false
-        },
-
-        "custom/separator-right": {
-            "format": "",
-            "on-click": "sleep 0.1 && bash ~/.config/waybar/scripts/wallpaper.sh",
-            "tooltip": false
-        },
-        "custom/separator-left": {
-            "format": "",
-            "tooltip": false
-        },
-
-        "custom/separator": {
-            "format": "|",
-            "tooltip": false
-        },
-
-
-        "custom/github": {
-            "format": " {}",
-            "return-type": "json",
-            "interval": 60,
-            "exec": "~/.scripts/github.sh",
-            "on-click": "xdg-open https://github.com/notifications"
-        },
-
-
-        "custom/updates": {
-            "format": "{icon} {}",
-            "return-type": "json",
-            "format-icons": {
-                "has-updates": "󱍷",
-                "updated": "󰂪"
-            },
-            "exec-if": "which waybar-module-pacman-updates",
-            "exec": "waybar-module-pacman-updates"
-        },
-
-
-
-        "custom/notification": {
-            "escape": true,
-            "exec": "swaync-client -swb",
-            "exec-if": "which swaync-client",
-            "format": " {icon} ",
-            "format-icons": {
-                "dnd-inhibited-none": "<span foreground='#FFFFFF'>󰂚</span><sup></sup>",
-                "dnd-inhibited-notification": "<span foreground='#FFFFFF'>󰂚</span><span foreground='#f38ba8'><sup></sup></span>",
-                "dnd-none": "<span foreground='#FFFFFF'>󰂛</span>",
-                "dnd-notification": "<span foreground='#FFFFFF'>󰂛</span><span foreground='#f38ba8'><sup></sup></span>",
-                "inhibited-none": "<span foreground='#FFFFFF'>󰂚</span><sup>󰜺</sup>",
-                "inhibited-notification": "󰵙<span foreground='#f38ba8'><sup></sup></span>",
-                "none": "<span foreground='#FFFFFF'>󰂚</span><span color='#6c7086'><sup></sup></span>",
-                "notification": "<span foreground='#FFFFFF'>󰂚</span><span foreground='#f38ba8'><sup></sup></span>"
-            },
-            "on-click": "sleep 0.1 && swaync-client -t -sw",
-            "on-click-right": "sleep 0.1 && swaync-client -d -sw",
-            "return-type": "json",
-            "tooltip": false
-        },
-
-
-
-        "group/stats": {
-            "orientation": "horizontal",
-            "modules": [
-                "custom/gpu-temperature",
-            "custom/separator",
-            "cpu",
-            "custom/separator",
-            "memory",
-            "custom/separator",
-            "disk"
-            ]
-        },
-
-
-        "group/notifications": {
-            "orientation": "horizontal",
-            "modules": [
-                "pulseaudio",
-                "custom/separator",
-                "network",
-                "custom/separator",
-                "custom/wallpaper",
-                "custom/separator",
-                "custom/github",
-                "custom/separator",
-                "custom/updates",
-                "custom/separator",
-                "custom/notification",
-                "custom/separator",
-                "clock"
-            ]
-        },
-
-        "group/workspace": {
-            "orientation": "horizontal",
-            "modules": [
-
-                "custom/power",
-                "custom/separator",
-                "hyprland/workspaces",
-
-            ]
-        },
+  "layer": "top",
+  "position": "top",
+  "output": [
+    "DP-1",
+    "HDMI-A-1"
+  ],
+  "margin-left": 0,
+  "margin-right": 0,
+  "margin-top": 0,
+  "modules-left": [
+    "group/notifications",
+  ],
+  "modules-center": [
+    "group/workspace"
+  ],
+  "modules-right": [
+    "group/stats"
+  ],
+  // Modules configuration
+  "custom/pomodoro": {
+    "format": "{}",
+    "pause": " 󰸉 ",
+    "return-type": "json",
+    "exec": "waybar-module-pomodoro -a '' -p '' -o ''",
+    "on-click": "waybar-module-pomodoro toggle",
+    "on-click-right": "waybar-module-pomodoro reset"
+  },
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "10": "10",
+      "urgent": "",
+      "default": ""
+    },
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "all-outputs": true
+  },
+  "clock": {
+    "interval": 60,
+    "format": "{:%I %M %p}",
+    "format-alt": " {:%Y-%m-%d}"
+  },
+  "temperature": {
+    "format": " {temperatureC}°C"
+  },
+  "custom/gpu-temperature": {
+    "exec": "nvidia-smi -q -i 0,1 -d TEMPERATURE | grep -oP 'GPU Current Temp\\s+:\\s+\\K\\d+'",
+    "format": " {}°C",
+    "return-type": "",
+    "interval": 1,
+    "on-click": "nvidia-settings"
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "on-click": "kitty btop",
+    "tooltip": true
+  },
+  "memory": {
+    "interval": 2,
+    "format": "{}% "
+  },
+  "disk": {
+    "format": "{percentage_used}% 󰋊"
+  },
+  "network": {
+    "interface": "wlp2s0",
+    "format": "{ifname}",
+    "format-wifi": "{essid}   {signalStrength}%",
+    "format-ethernet": "{ipaddr}/{cidr} 󰊗",
+    "format-disconnected": "",
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+  "pulseaudio": {
+    "format": "{volume}% {icon}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": " {icon} {format_source}",
+    "format-muted": " {format_source}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    },
+    "on-click": "pavucontrol"
+  },
+  "custom/power": {
+    "format": "{icon}",
+    "format-icons": "",
+    "exec-on-event": "true",
+    "on-click": "~/.scripts/session_menu.sh",
+    "tooltip": false
+  },
+  "custom/separator-right": {
+    "format": "",
+    "on-click": "sleep 0.1 && bash ~/.config/waybar/scripts/wallpaper.sh",
+    "tooltip": false
+  },
+  "custom/separator-left": {
+    "format": "",
+    "tooltip": false
+  },
+  "custom/separator": {
+    "format": "|",
+    "tooltip": false
+  },
+  "custom/github": {
+    "format": " {}",
+    "return-type": "json",
+    "interval": 60,
+    "exec": "~/.scripts/github.sh",
+    "on-click": "xdg-open https://github.com/notifications"
+  },
+  "custom/notification": {
+    "escape": true,
+    "exec": "swaync-client -swb",
+    "exec-if": "which swaync-client",
+    "format": " {icon} ",
+    "format-icons": {
+      "dnd-inhibited-none": "<span foreground='#FFFFFF'>󰂚</span><sup></sup>",
+      "dnd-inhibited-notification": "<span foreground='#FFFFFF'>󰂚</span><span foreground='#f38ba8'><sup></sup></span>",
+      "dnd-none": "<span foreground='#FFFFFF'>󰂛</span>",
+      "dnd-notification": "<span foreground='#FFFFFF'>󰂛</span><span foreground='#f38ba8'><sup></sup></span>",
+      "inhibited-none": "<span foreground='#FFFFFF'>󰂚</span><sup>󰜺</sup>",
+      "inhibited-notification": "󰵙<span foreground='#f38ba8'><sup></sup></span>",
+      "none": "<span foreground='#FFFFFF'>󰂚</span><span color='#6c7086'><sup></sup></span>",
+      "notification": "<span foreground='#FFFFFF'>󰂚</span><span foreground='#f38ba8'><sup></sup></span>"
+    },
+    "on-click": "sleep 0.1 && swaync-client -t -sw",
+    "on-click-right": "sleep 0.1 && swaync-client -d -sw",
+    "return-type": "json",
+    "tooltip": false
+  },
+  "group/stats": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/gpu-temperature",
+      "custom/separator",
+      "cpu",
+      "custom/separator",
+      "memory",
+      "custom/separator",
+      "disk"
+    ]
+  },
+  "group/notifications": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/power",
+      "custom/separator",
+      "pulseaudio"
+    ]
+  },
+  "group/workspace": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/pomodoro",
+      "custom/separator",
+      "hyprland/workspaces",
+      "custom/separator",
+      "clock"
+    ]
+  },
+  "custom/whiteking": {
+    "format": "♔",
+    "tooltip": false
+  },
+  "custom/whitequeen": {
+    "format": "♕",
+    "tooltip": false
+  },
+  "custom/whiterook": {
+    "format": "♖",
+    "tooltip": false
+  },
+  "custom/whitebishop": {
+    "format": "♗",
+    "tooltip": false
+  },
+  "custom/whiteknight": {
+    "format": "♘",
+    "tooltip": false
+  },
+  "custom/whitepawn": {
+    "format": "♙",
+    "tooltip": false
+  },
+  "group/chessWhite": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/whiteking",
+      "custom/whitequeen",
+      "custom/whiterook",
+      "custom/whitebishop",
+      "custom/whiteknight",
+      "custom/whitepawn"
+    ]
+  },
+  "custom/blackking": {
+    "format": "♚",
+    "tooltip": false
+  },
+  "custom/blackqueen": {
+    "format": "♛",
+    "tooltip": false
+  },
+  "custom/blackrook": {
+    "format": "♜",
+    "tooltip": false
+  },
+  "custom/blackbishop": {
+    "format": "♝",
+    "tooltip": false
+  },
+  "custom/blackknight": {
+    "format": "♞",
+    "tooltip": false
+  },
+  "custom/blackpawn": {
+    "format": "♟",
+    "tooltip": false
+  },
+  "group/chessBlack": {
+    "orientation": "horizontal",
+    "modules": [
+      "custom/blackking",
+      "custom/blackqueen",
+      "custom/blackrook",
+      "custom/blackbishop",
+      "custom/blackknight",
+      "custom/blackpawn"
+    ]
+  }
 }

@@ -1,7 +1,7 @@
 @define-color fg #F5F5F5;
 @define-color bg #1C1C1C;
 @define-color text #FFFFFF;
-@define-color bordercolor #595959;
+@define-color bordercolor @bg;
 @define-color buttoncolor #A0A0A0;
 @define-color disabled #A5A5A5;
 @define-color alert #F53C3C;
@@ -12,131 +12,82 @@
 @define-color yellow #eed49f;
 @define-color green #a6da95;
 
-/*
-@define-color base #24273a;
-@define-color mantle #1e2030;
-@define-color crust #181926;
-
-@define-color text #cad3f5;
-@define-color subtext0 #a5adcb;
-@define-color subtext1 #b8c0e0;
-
-@define-color surface0 #363a4f;
-@define-color surface1 #494d64;
-@define-color surface2 #5b6078;
-
-@define-color overlay0 #6e738d;
-@define-color overlay1 #8087a2;
-@define-color overlay2 #939ab7;
-
-@define-color blue #8aadf4;
-@define-color lavender #b7bdf8;
-@define-color sapphire #7dc4e4;
-@define-color sky #91d7e3;
-@define-color teal #8bd5ca;
-@define-color yellow #eed49f;
-@define-color peach #f5a97f;
-@define-color maroon #ee99a0;
-@define-color red #ed8796;
-@define-color mauve #c6a0f6;
-@define-color pink #f5bde6;
-@define-color flamingo #f0c6c6;
-@define-color rosewater #f4dbd6;
-*/
-
-#custom-pomodoro {
-  color: @highlight;
-  background-color: @bg;
-  padding: 0 14px 0 14px;
-  font-size: 20px;
-  margin: 0.35em;
-  border: 2px solid @bordercolor;
-}
 * {
   font-family: Liga SFMono Nerd Font;
-  font-size: 15px;
-  border-radius: 1em;
+  font-size: 14px; /* Adjusted size */
+  font-weight: bold;
+  border-radius: 0; /* Removed rounded corners to match the second config */
+  padding: 0; /* Removed padding for a cleaner look, except in modules */
+  margin: 0; /* Removed margins */
+  border: none; /* Removed borders */
+  box-shadow: none; /* Removed shadow for flat design */
+  transition-duration: 0s; /* No transition for instant effects */
+  transition-property: background-color; /* Matching second config */
 }
 
+#workspaces,
+#custom-pomodoro {
+  padding: 0 5px 0 5px; /* Reduced padding */
+}
+
+#clock {
+  padding: 0 5px 0 12px;
+}
 #workspace {
-    margin: 0.5em;
-    border: 2px solid @bordercolor;
-    background-color: @bg;
+  margin: 0px 0px; /* Adjusted margin */
+  padding: 0 8px; /* Adjusted padding */
+  border: none; /* Removed border */
+  background-color: @bg;
 }
 
 #custom-power {
-  color: @highlight;
-  font-weight: bold;
+  font-size: 14px;
   background-color: @bg;
-  padding: 0 14px 0 14px;
-  font-size: 20px;
+  padding: 0 14px;
 }
 #workspaces {
-    color: @buttoncolor;
-    font-weight: bold;
-    background-color: @bg;
-    font-size: 20px;
+  font-size: 14px; /* Adjusted font size */
+  background-color: @bg;
 }
-
-#workspaces label {}
 
 #workspaces button {
-    margin: 0.25em;
-    color: @buttoncolor;
-    background-color: @bg;
-    padding: 0 10px;
-    border-radius: 16px;
-    font-size: 15px;
-}
-
-#workspaces button.urgent {
-    color: @red;
-}
-
-#workspaces button.empty {
-    color: @buttoncolor;
+  margin: 0; /* Removed margin */
+  padding: 1px 0px; /* Reduced padding */
+  border-radius: 0; /* Removed rounded corners */
+  background-color: @bg;
+  color: @buttoncolor;
 }
 
 #workspaces button.active {
-    color: @highlight;
-    padding: 0 12px 0 10px;
-    border-radius: 16px;
-    background-color: @bordercolor;
-    border: none;
-    opacity: 1;
+  padding: 0 0px 0 0px; /* Adjusted padding */
+  border-radius: 0; /* Removed rounded corners */
+  background-color: @bordercolor;
+  border: none; /* Removed border */
+  color: @highlight;
 }
+
 #custom-spotify,
 #stats {
   background-color: @bg;
-  border: 2px solid @bordercolor;
-  margin: 0.5em;
-  padding: 0 10px;
+  margin: 0px 0px; /* Adjusted margin */
+  padding: 0 8px; /* Adjusted padding */
 }
 
 #notifications {
-  margin: 0.5em;
-  padding: 0 5px;
-  color: @buttoncolor;
-  font-weight: bold;
-  background-color: @bg;
-  border: 2px solid @bordercolor;
+  margin: 0px 0px; /* Adjusted margin */
+  padding: 1px 0px; /* Reduced padding */
+  border: none; /* Removed border */
 }
 
-
-/*
-#window {
-  color: @highlight;
-  background-color: @bg;
-  border: 2px solid @bordercolor;
-  border-radius: 1em;
-  margin: 0.5em;
-  padding-left: 10px;
-  padding-right: 10px;
-}
-*/
 window#waybar {
   color: @text;
-  background: rgba(0, 0, 0, 0);
+  background-color: #1b1b1b; /* Matched background color */
+}
+
+window#waybar,
+#workspace,
+#stats {
+  border-bottom: 1px solid #4d4d4d;
 }
 
 window#waybar.hidden {
@@ -146,6 +97,7 @@ window#waybar.hidden {
 tooltip {
   background: @bg;
   border: 1px solid @bordercolor;
+  border-radius: 13px;
 }
 
 tooltip label {
@@ -157,20 +109,19 @@ label:focus {
 }
 
 button {
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each button name */
+  box-shadow: none; /* Removed shadow */
   border: none;
-  border-radius: 0;
+  border-radius: 0; /* Removed rounded corners */
 }
 
 box {
   border: none;
 }
 
-#custom-notificaton{
-    color: @highlight;
+#custom-notificaton {
+  color: @highlight;
 }
+
 #custom-updates,
 #custom-github,
 #cpu,
@@ -181,29 +132,7 @@ box {
 #bluetooth,
 #pulseaudio,
 #network {
-  padding: 0 0.5em;
-}
-
-/* Unique colors for modules */
-#cpu {
-  color: @red;
-}
-
-#memory {
-  color: @yellow;
-}
-
-#disk {
-  color: @red;
-}
-
-#custom-gpu-temperature,
-#temperature {
-  color: @blue;
-}
-
-#network {
-  color: @highlight;
+  padding: 0px 0.5em; /* Reduced padding */
 }
 
 #pulseaudio {
@@ -228,21 +157,21 @@ box {
   background-color: @alert;
 }
 
-#clock {
-  padding-right: 10px;
-  font-size: 15px;
-  font-weight: bold;
+#clock,
+#custom-pomodoro {
+  padding-right: 5px; /* Reduced padding */
+  font-size: 14px; /* Adjusted font size */
   color: @highlight;
 }
 
-#custom-wallpaper{
-    color: @green;
-    padding-right: 2px;
+#custom-wallpaper {
+  color: @green;
+  padding-right: 2px;
 }
 
 #custom-separator-right,
 #custom-separator-left {
-  font-size: 20px;
+  font-size: 14px; /* Adjusted font size */
   padding: 0 0.5em;
   color: @text;
 }
@@ -254,13 +183,12 @@ box {
   }
 }
 
-/* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
   margin-left: 0;
+  padding-left: 10px; /* Keep padding consistent with original */
 }
 
-/* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
   margin-right: 0;
+  padding-right: 10px; /* Keep padding consistent with original */
 }
-
