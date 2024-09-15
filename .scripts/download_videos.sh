@@ -1,12 +1,10 @@
-
 #!/bin/bash
 
 # Define the path to the file containing the links
-links_file="links"
+links_file="/home/frank/.scripts/links"
 
 # Read the file line by line
-while IFS= read -r link
-do
+while IFS= read -r link; do
   # Ensure the line is not empty
   if [ -n "$link" ]; then
     # List available formats and select the best audio format
@@ -25,5 +23,4 @@ do
       echo "No valid audio format found for: $link"
     fi
   fi
-done < "$links_file"
-
+done <"$links_file"

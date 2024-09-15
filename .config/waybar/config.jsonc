@@ -162,25 +162,21 @@
       "custom/separator",
       "memory",
       "custom/separator",
-      "disk"
+      "pulseaudio"
     ]
   },
   "group/notifications": {
     "orientation": "horizontal",
     "modules": [
       "custom/power",
-      "custom/separator",
-      "pulseaudio"
     ]
   },
   "group/workspace": {
     "orientation": "horizontal",
     "modules": [
-      "custom/pomodoro",
-      "custom/separator",
       "hyprland/workspaces",
       "custom/separator",
-      "clock"
+      "clock",
     ]
   },
   "custom/whiteking": {
